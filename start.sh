@@ -12,7 +12,7 @@ bashio::log.notice "${PUBLIC_KEY}"
 if [ ! -f /data/known_hosts ]; then
    bashio::log.info "Running for the first time, acquiring host key and storing it in /data/known_hosts."
    ssh-keyscan -p $(bashio::config 'port') "$(bashio::config 'host')" > /data/known_hosts \
-     || bashio::exit.nok "Could not acquire host key from backup server." 
+     || bashio::exit.nok "Could not acquire host key from backup server."
 fi
 
 bashio::log.info 'Trying to initialize the Borg repository.'
