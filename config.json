@@ -1,20 +1,38 @@
 {
   "name": "BorgBackup",
-  "version": 1,
+  "version": "0.48",
   "slug": "borg_backup",
   "description": "BorgBackup as a Hassio Add-On",
-  "arch": ["armhf","armv7", "aarch64", "amd64", "i386"],
+  "url": "https://github.com/issacg/hassio-addon-devcontainer",
   "startup": "before",
   "boot": "auto",
+  "map": [
+    "backup"
+  ],
+  "host_network": true,
   "options": {
-    "repo": null,
-    "passphrase": null
+    "user": null,
+    "host": null,
+    "port": 22,
+    "path": "~",
+    "archive": "hassio",
+    "passphrase": null,
+    "prune_options": "--keep-daily=8 --keep-weekly=5 --keep-monthly=13"
   },
   "schema": {
-    "repo": "str",
-    "passphrase": "str"
+    "user": "str",
+    "host": "str",
+    "port": "port",
+    "path": "str",
+    "archive": "str",
+    "passphrase": "password",
+    "prune_options": "str?"
   },
-  "map": [ "backup" ],
-
-  "host_network": true
+  "arch": [
+    "armhf",
+    "armv7",
+    "aarch64",
+    "amd64",
+    "i386"
+  ]
 }
