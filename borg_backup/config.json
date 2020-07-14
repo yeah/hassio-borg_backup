@@ -2,6 +2,7 @@
   "name": "BorgBackup",
   "version": "0.48",
   "slug": "borg_backup",
+  "image": "jansh/image-{arch}-borg_backup",
   "description": "BorgBackup as a Hassio Add-On",
   "url": "https://github.com/issacg/hassio-addon-devcontainer",
   "startup": "before",
