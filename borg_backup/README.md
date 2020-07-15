@@ -38,6 +38,7 @@ Run this Add-on whenever you would like to upload your backups to the Borg serve
 
 ```yaml
 - alias: Upload snapshots to Borg
+  id: upload_snapshots_to_borg
   trigger:
   - platform: time_pattern
     hours: '5'
@@ -46,13 +47,17 @@ Run this Add-on whenever you would like to upload your backups to the Borg serve
   action:
   - service: hassio.addon_start
     data:
-      addon: local_borg_backup
+      # your add-on identifier will differ from this one
+      # find it as part of the add-on URL in
+      # Supervisor -> Add-ons
+      addon: abcdef01_borg_backup
 ```
 
 Please note that this Add-on does not trigger Hassio snapshots. You will have to do this manually or create an automation for it like so:
 
 ```yaml
 - alias: Create Snapshot
+  id: create_snapshot
   trigger:
   - platform: time_pattern
     hours: '3'
