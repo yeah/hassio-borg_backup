@@ -4,6 +4,10 @@
 
 This Add-on uploads the contents of `/backup` to a remote [Borg Backup](https://www.borgbackup.org/) server.
 
+## Installation
+
+Add this repository's URL as an Add-on repo to your Hassio via Supervisor → Add-on store → Repositories.
+
 ## Configuration
 
 The following configuration options are available:
