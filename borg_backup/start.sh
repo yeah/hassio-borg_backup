@@ -16,20 +16,20 @@ if [ ! -f /data/known_hosts ]; then
 fi
 
 bashio::log.info 'Trying to initialize the Borg repository.'
-/usr/local/bin/borg init -e repokey || true
+/usr/bin/borg init -e repokey || true
 
 if [ "$(date +%u)" = 7 ]; then
   bashio::log.info 'Checking archive integrity. (Today is Sunday.)'
-  /usr/local/bin/borg check \
+  /usr/bin/borg check \
     || bashio::exit.nok "Could not check archive integrity."
 fi
 
 bashio::log.info 'Uploading backup.'
-/usr/local/bin/borg create "::$(bashio::config 'archive')-{utcnow}" /backup \
+/usr/bin/borg create "::$(bashio::config 'archive')-{utcnow}" /backup \
   || bashio::exit.nok "Could not upload backup."
 
 bashio::log.info 'Pruning old backups.'
-/usr/local/bin/borg prune --list -P $(bashio::config 'archive') $(bashio::config 'prune_options') \
+/usr/bin/borg prune --list -P $(bashio::config 'archive') $(bashio::config 'prune_options') \
   || bashio::exit.nok "Could not prune backups."
 
 bashio::log.info 'Finished.'

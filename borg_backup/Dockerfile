@@ -1,21 +1,11 @@
-ARG BUILD_FROM
+ARG BUILD_FROM=homeassistant/amd64-base:latest
 FROM $BUILD_FROM
 ENV LANG C.UTF-8
 
 RUN apk add --no-cache --update \
-        openssh-client \
-        openssh-keygen \
-        libacl \
-        acl-dev \
-        libffi \
-        musl \
-        openssl \
-        g++ \
-        libffi-dev \
-        musl-dev \
-        openssl-dev \
- && pip3 install cython borgbackup
-
+          borgbackup \
+          openssh-client \
+          openssh-keygen
 
 WORKDIR /
 
@@ -25,4 +15,4 @@ COPY start.sh /app/start.sh
 RUN chmod a+x /app/start.sh
 ENTRYPOINT ["/app/start.sh"]
 
-LABEL io.hass.version="VERSION" io.hass.type="addon" io.hass.arch="armhf|aarch64|i386|amd64|armv7"
+LABEL io.hass.version="VERSION" io.hass.type="addon" io.hass.arch="armhf|aarch64|i386|amd64"

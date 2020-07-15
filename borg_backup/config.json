@@ -1,8 +1,7 @@
 {
   "name": "BorgBackup",
-  "version": "0.48",
+  "version": "0.55",
   "slug": "borg_backup",
-  "image": "jansh/image-{arch}-borg_backup",
   "description": "BorgBackup as a Hassio Add-On",
   "url": "https://github.com/yeah/hassio-borg_backup",
   "startup": "before",
