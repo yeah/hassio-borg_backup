@@ -4,10 +4,10 @@
   "slug": "borg_backup",
   "description": "BorgBackup as a Hassio Add-On",
   "url": "https://github.com/yeah/hassio-borg_backup",
-  "startup": "before",
+  "startup": "once",
   "boot": "auto",
   "map": [
-    "backup"
+    "backup:rw"
   ],
   "host_network": true,
   "options": {
@@ -17,7 +17,8 @@
     "path": "~",
     "archive": "hassio",
     "passphrase": null,
-    "prune_options": "--keep-daily=8 --keep-weekly=5 --keep-monthly=13"
+    "prune_options": "--keep-daily=8 --keep-weekly=5 --keep-monthly=13",
+    "local_snapshot": 3
   },
   "schema": {
     "user": "str",
@@ -26,7 +27,8 @@
     "path": "str",
     "archive": "str",
     "passphrase": "password",
-    "prune_options": "str?"
+    "prune_options": "str?",
+    "local_snapshot": "int(0,)?"
   },
   "arch": [
     "armhf",
