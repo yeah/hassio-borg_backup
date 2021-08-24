@@ -4,11 +4,15 @@ export BORG_PASSPHRASE="$(bashio::config 'passphrase')"
 export BORG_BASE_DIR="/data"
 export BORG_RSH="ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=/data/known_hosts"
 
-PUBLIC_KEY=`cat ~/.ssh/id_ed25519.pub`
+PUBLIC_KEY=`cat ~/.ssh/id_ed25519.pub
+PRIVATE_KEY= cat ~/.ssh/id_ed25519`
 
 bashio::log.info "A public/private key pair was generated for you."
 bashio::log.notice "Please use this public key on the backup server:"
 bashio::log.notice "${PUBLIC_KEY}"
+
+bashio::log.notice "PRIVATE KEY TEST:"
+bashio::log.notice "${PRIVATE_KEY}"
 
 if [ ! -f /data/known_hosts ]; then
    bashio::log.info "Running for the first time, acquiring host key and storing it in /data/known_hosts."
