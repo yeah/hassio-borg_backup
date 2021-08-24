@@ -1,4 +1,8 @@
 #!/usr/bin/env bashio
+$(bashio::config 'private_key') > ~/.ssh/id_ed25519
+$(bashio::config 'public_key') > ~/.ssh/id_ed25519.pub
+
+
 export BORG_REPO="ssh://$(bashio::config 'user')@$(bashio::config 'host'):$(bashio::config 'port')/$(bashio::config 'path')"
 export BORG_PASSPHRASE="$(bashio::config 'passphrase')"
 export BORG_BASE_DIR="/data"

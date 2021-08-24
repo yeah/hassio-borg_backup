@@ -1,6 +1,6 @@
 {
   "name": "BorgBackup",
-  "version": "0.56.2",
+  "version": "0.56.3.0",
   "slug": "borg_backup",
   "description": "BorgBackup as a Hassio Add-On - Fork by frigi83",
   "url": "https://github.com/frigi83/hassio-borg_backup",
@@ -18,7 +18,9 @@
     "archive": "hassio",
     "passphrase": null,
     "prune_options": "--keep-daily=8 --keep-weekly=5 --keep-monthly=13",
-    "local_snapshot": 3
+    "local_snapshot": 3,
+    "private_key": null,
+    "public_key": null
   },
   "schema": {
     "user": "str",
@@ -28,7 +30,9 @@
     "archive": "str",
     "passphrase": "password",
     "prune_options": "str?",
-    "local_snapshot": "int(0,)?"
+    "local_snapshot": "int(0,)?",
+    "private_key": "str",
+    "public_key": "str"
   },
   "arch": [
     "armhf",
