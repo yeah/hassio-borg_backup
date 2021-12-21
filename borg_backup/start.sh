@@ -33,5 +33,14 @@ bashio::log.info 'Pruning old backups.'
 /usr/bin/borg prune --list -P $(bashio::config 'archive') $(bashio::config 'prune_options') \
   || bashio::exit.nok "Could not prune backups."
 
+local_snapshot_config=$(bashio::config 'local_snapshot')
+local_snapshot=$((local_snapshot_config + 1))
+
+if [ $local_snapshot -gt 1 ]; then
+  bashio::log.info 'Cleaning old snapshots.'
+  cd /backup
+  ls -tp | grep -v '/$' | tail -n +$local_snapshot | tr '\n' '\0' | xargs -0 rm --
+fi
+
 bashio::log.info 'Finished.'
 bashio::exit.ok
